@@ -1,4 +1,7 @@
 # POROČILO
+>[!WARNING]
+>Koda bo uploudana ko bom vse spravil v en program. Trenutno ima vsaka funckija en program
+
 >[!NOTE]
 >Projekt je izdelan za projektno nalogo pri projektu Informatika v 1. letniku na Gimnaziji Vič
 ## Opis Naloge
@@ -11,9 +14,11 @@ knjižnice lahko prisilno ustavimo(enako kot windows task manager).
 - [x] PID list
 - [x] Process kill
 - [x] Performance graph
+- [ ] združitev seh funkcij v en program
 - [ ] Hitrejši startup time
 - [ ] Lepši GUI
 - [ ] iskalnik procesov
+- [ ] izboljšava Poročila
 ## Progress
-
+Program zanekrat deluje precejo okorno ter počasi vendar osnovne funkcije delujejo, v prihodnosti bo izboljšan.
 
