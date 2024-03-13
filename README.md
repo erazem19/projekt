@@ -1,9 +1,4 @@
 # POROČILO
->[!WARNING]
->Kodo še čakamo
-
->[!NOTE]
->Projekt je izdelan za projektno nalogo pri projektu Informatika v 1. letniku na Gimnaziji Vič
 ## Opis Naloge
 Izdelujemo spletno aplikacijo ki nam prikazuje pisne ocene ter tudi sezname za ustna spraševanja. Aplikacija je zasnovana tako da lahko oseba z uporabniškim imenom in geslom ureja sezname ostali jih pa lahko gledajo.
 ## Načrt Programa
