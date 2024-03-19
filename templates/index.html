@@ -38,6 +38,19 @@
         </div>
     </nav>
     <h1>Test Dates</h1>
+    <ul class="prihajajoči testi">
+      {% for test in tests %}
+        {% if date.strftime("%Y-%m-%d") == test.date %}
+          <li>
+            <strong>{{ test.subject }}</strong> - {{ test.date }}
+            <form action="{{ url_for('delete_test', test_id=test.id) }}" method="post">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  
     <ul class="seznami-testov">
         {% for test in tests %}
         <li>
