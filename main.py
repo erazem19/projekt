@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
-import datetime
+from sqlalchemy import asc
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test_calendar.db'
@@ -18,6 +19,7 @@ class Test(db.Model):
 
     def __repr__(self):
         return f"Test(subject='{self.subject}', date='{self.date}', details='{self.details}')"
+
 
 # Define the Person model
 class Person(db.Model):
@@ -80,9 +82,11 @@ def add_test():
 @app.route('/')
 def index():
     # Query the database for tests
-    tests = Test.query.all()
+    tests = Test.query.order_by(asc(Test.date)).limit(3000).all()
     # Pass the tests to the index.html template
-    return render_template('index.html', tests=tests)
+    date = datetime.now()
+
+    return render_template('index.html', tests=tests, date=date)
 
 # Route to delete a test
 @app.route('/delete_test/<int:test_id>', methods=['POST'])
@@ -103,10 +107,10 @@ def seznam1():
     return render_template('seznam1.html')
 
 #dodaj na seznam
-@app.route('/add_person', methods=['POST'])
+@app.route('/add_person', methods=['GET', 'POST'])
 def add_person():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))  # Redirect to login if not logged in
+        return redirect(url_for('login'))
 
     name = request.form.get('name')
 
@@ -117,4 +121,5 @@ def add_person():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+    print(datetime.now)
     app.run(debug=True)
