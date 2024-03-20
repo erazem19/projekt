@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import asc
-from datetime import datetime
+from datetime import datetime, timedelta
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test_calendar.db'
@@ -25,7 +26,6 @@ class Test(db.Model):
 class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-
     def __repr__(self):
         return f"Person(name='{self.name}')"
 
@@ -34,6 +34,10 @@ users = {
     'user1': 'password1',
     'user2': 'password2'
 }
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/x-icon')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -85,6 +89,12 @@ def index():
     tests = Test.query.order_by(asc(Test.date)).limit(3000).all()
     # Pass the tests to the index.html template
     date = datetime.now()
+    flash(date)
+    danminus1 = datetime.today() - timedelta(days=1)
+    for test in tests:
+        if danminus1.strftime("%Y-%m-%d") == test.date:
+            test_id = test.id
+            delete_test(test_id)
 
     return render_template('index.html', tests=tests, date=date)
 
@@ -103,20 +113,33 @@ def delete_test(test_id):
 # gumb->seznam1.html
 @app.route('/seznam1')
 def seznam1():
+    
+    person = Person.query.all()
     # You can pass any necessary data to the template here
-    return render_template('seznam1.html')
+    return render_template('seznam1.html', person=person)  
 
 #dodaj na seznam
 @app.route('/add_person', methods=['GET', 'POST'])
 def add_person():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-
     name = request.form.get('name')
-
+    print("prazno polje")
     person = Person(name=name)
     db.session.add(person)
     db.session.commit()
+
+    return redirect(url_for('seznam1'))  
+
+@app.route('/delete_person/<int:person_id>', methods=['POST'])
+def delete_person(person_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    person = Person.query.get_or_404(person_id)
+    db.session.delete(person)
+    db.session.commit()
+
+    return redirect(url_for('seznam1')) 
 
 if __name__ == '__main__':
     with app.app_context():
