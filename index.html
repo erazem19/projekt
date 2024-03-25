@@ -22,7 +22,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('seznam1') }}">Fizika ustno</a>
-                </li>
+            </li>
             
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +39,7 @@
           </ul>
         </div>
     </nav>
-    <h1>Test Dates</h1>
+    <h1 class="naslov">Datumi testov</h1>
     <ul class="prihajajoči testi">
       {% for test in tests %}
         {% if date.strftime("%Y-%m-%d") == test.date %}

@@ -11,7 +11,7 @@ app.secret_key = 'your_secret_key_here'
 
 db = SQLAlchemy(app)
 
-# Define the Test model
+# seznam testov
 class Test(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(100), nullable=False)
@@ -22,7 +22,7 @@ class Test(db.Model):
         return f"Test(subject='{self.subject}', date='{self.date}', details='{self.details}')"
 
 
-# Define the Person model
+# seznam oseb
 class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -34,6 +34,7 @@ users = {
     'user1': 'password1',
     'user2': 'password2'
 }
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
@@ -52,44 +53,44 @@ def login():
             return 'Invalid username or password'
     return render_template('login.html')
 
-# Route to handle logout
+# Route za logout gumb
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('logged_in', None)
     session.pop('username', None)
     return redirect(url_for('index'))
 
+#route za gumb za dodajanje testa
 @app.route('/add_test_form')
 def add_test_form():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))  # Redirect to login if not logged in
+        return redirect(url_for('login'))  
     return render_template('add_test_form.html')
 
+# dodajanje testa
 @app.route('/add_test', methods=['POST'])
 def add_test():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))  # Redirect to login if not logged in
+        return redirect(url_for('login'))  
 
-    # Process the form submission
+    # data from form
     subject = request.form.get('subject')
     date = request.form.get('date')
     details = request.form.get('details')
 
-    # Add the test to the database or perform any other necessary actions
+    # Add the test to the database
     test = Test(subject=subject, date=date, details=details)
     db.session.add(test)
     db.session.commit() 
-    # Redirect back to the index page after adding the test
     return redirect(url_for('index'))
 
-# Route to display the main page with tests
+# Display index
 @app.route('/')
 def index():
     # Query the database for tests
     tests = Test.query.order_by(asc(Test.date)).limit(3000).all()
     # Pass the tests to the index.html template
     date = datetime.now()
-    flash(date)
     danminus1 = datetime.today() - timedelta(days=1)
     for test in tests:
         if danminus1.strftime("%Y-%m-%d") == test.date:
@@ -109,16 +110,15 @@ def delete_test(test_id):
     db.session.commit()
     return redirect(url_for('index'))
 
-# seznam za fiziko
-# gumb->seznam1.html
+# -seznam za ustna spraševanja-
+# button to seznam1.html
 @app.route('/seznam1')
 def seznam1():
-    
     person = Person.query.all()
-    # You can pass any necessary data to the template here
+    
     return render_template('seznam1.html', person=person)  
 
-#dodaj na seznam
+# add a person to list
 @app.route('/add_person', methods=['GET', 'POST'])
 def add_person():
     if not session.get('logged_in'):
@@ -130,7 +130,7 @@ def add_person():
     db.session.commit()
 
     return redirect(url_for('seznam1'))  
-
+# briši osebo
 @app.route('/delete_person/<int:person_id>', methods=['POST'])
 def delete_person(person_id):
     if not session.get('logged_in'):
@@ -141,8 +141,8 @@ def delete_person(person_id):
 
     return redirect(url_for('seznam1')) 
 
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    print(datetime.now)
     app.run(debug=True)
