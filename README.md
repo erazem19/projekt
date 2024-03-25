@@ -2,7 +2,7 @@
 ## Opis Naloge
 Program je napisan v pythonu s pomočjo knjižnice **Flask**. Program je zasnovan kot spletna aplikacija katere cillj je prikazovanje prihajajočih testov. Uporabnik lahko pod pogojem da ima uporabniško ime in geslo dodaja ali odstranjuje teste. 
 ## Načrt Programa
-Program deluje s pomočjo python knjižnice **Flask** ter **SQLAlchemy** podatkovne baze. Flask poskrbi za vse funkcije dodajanja in brisanja podatkov iz baze ter pa tudi prikaz na sami spletni strani.
+Program deluje s pomočjo python knjižnice **Flask** ter **SQLAlchemy**  in pa database **SQLite**. Flask poskrbi za vse funkcije dodajanja in brisanja podatkov iz baze ter pa tudi prikaz na sami spletni strani.
 - Flask rendera spletno stran
 - S pomočjo funckije **for test in testi** naredimo nov element na ne urejenem listu __(unordered list)__ ter vsakemu testu dodamo tudi gumb za izbris.
 - Funkcija v Flasku teste razporedi po padajočem datumu.
@@ -48,4 +48,13 @@ Te na to program izpiše na _index.html_
 
 ### Koncept spremenljivke 
 ![image](https://github.com/erazem19/projekt/blob/main/slike/Screenshot5(inf).png)  
-Ustvarimo sprmenčjivko _danminus1_ katero nastavimo na včerajšnji datum. Nato za vsak test v bazi preverimo če je njegov datum enak spremenljivki _danminus1_.  _strftime("%Y-%m-%d") obrne vrstni red datuma v leto-mesec-dan._
+Ustvarimo sprmenčjivko _danminus1_ katero nastavimo na včerajšnji datum. Nato za vsak test v bazi preverimo če je njegov datum enak spremenljivki _danminus1_.  
+_strftime("%Y-%m-%d") obrne vrstni red datuma v leto-mesec-dan._
+
+### Tabelarična spremenljivka (list) 
+![image](https://github.com/erazem19/projekt/blob/main/slike/Screenshot6(inf).png)  
+V mojem projektu dejanskih **_python listov_** nisem uporabil saj za to ni bilo potrebe. Sem pa uporabil **SQLite** podatkovno bazo v katero shranjujemo vse podatke. Vsak test dobi svoj id, predmet, ter datum.  
+_return f"Test(subject='{self.subject}', date='{self.date}', details='{self.details}')"_ s pomočjo tega ukaza nato vse podatke spravimo v lepo obliko berljivo za program.  
+
+# ZAKLJUČEK
+Projekt je še kar uredu usepel vendar mi na žalost ni useplo narediti funkcije ki bi nam omgočala dodajanje več seznamov za ustna spraševanja. Zaradi tega je ta funckcija precej neuporabna. To je seveda zaradi mojih zelo omejenih izkušenj z podatkovnimi bazami in se mi je pojvaila težava ko sem dodal tretjo tabelo vanjo je začelo vse skupaj delati malo posvoje. Prav tako dizajn ni ravno najlepši, ker čeprav css še kar uredu poznam ga nimam prav preveč rad in tudi naloga je o pythonu ne pa css in html za to sem več časa posvetil pythonu.
