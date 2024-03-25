@@ -11,6 +11,8 @@ Program deluje s pomočjo python knjižnice **Flask** ter **SQLAlchemy**  in pa 
 - **Flask Session** nam omogoča da ko se uporabnik prijavi lahko s pomočjo piškotkov shranimo njegov _session_ tako vemo ali je uporabnik prijavljen ali ne.
 - Imamo tudi seznam za ustno spraševanje kjer lahko dodajamo ljudi van vendar žal deluje le napol
 
+## +
+Če bi se spletna stran dejansko deployala bi bilo potrebno uporabnike vezati na podatkovno bazo trenutno sta nastavljena dva uporabnika kot user1 in user2 z gesloma password1 in password2 fino bi bilo tudi dodati sistem kjer shranimo hashano geslo ter primerjamo hashana gesla. Ker pa ta projekt ni namenjen temu lahko uporabljamo kar tak sistem. 
 
 # To Do List
 - [x] dodajanje testov
@@ -19,8 +21,6 @@ Program deluje s pomočjo python knjižnice **Flask** ter **SQLAlchemy**  in pa 
 - [ ] več seznamov ❌
 - [ ] dnevi pri testih ❌
 - [x] razdelitev testov ~~po predmetu~~ in datumu
-## Progress
-Programu manjkajo funckije ter lpeša grafika.
 
 # Dokazi o naučenem
 ### Koncept zaporednosti izvajanja ukazov
@@ -60,3 +60,5 @@ _return f"Test(subject='{self.subject}', date='{self.date}', details='{self.deta
 Projekt je še kar uredu usepel vendar mi na žalost ni useplo narediti funkcije ki bi nam omgočala dodajanje več seznamov za ustna spraševanja. Zaradi tega je ta funckcija precej neuporabna. To je seveda zaradi mojih zelo omejenih izkušenj z podatkovnimi bazami in se mi je pojvaila težava ko sem dodal tretjo tabelo vanjo je začelo vse skupaj delati malo posvoje.  
 Prav tako dizajn ni ravno najlepši, ker čeprav css še kar uredu poznam ga nimam prav preveč rad in tudi naloga je o pythonu ne pa css in html za to sem več časa posvetil Pythonu.  
 Nekaterih funkcij ki bi si jih želel mi tudi ni useplo vključiti ker bi za vse te stvari potreboval dejansko znati SQLite vnedar sem še kar zadovoljen kako mi je usepelo glede na to da ga prvič uporabljam.
+
+#### Erazem Perko 1.b GIMVIC 2024©
