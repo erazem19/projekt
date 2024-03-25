@@ -58,7 +58,7 @@ _return f"Test(subject='{self.subject}', date='{self.date}', details='{self.deta
 
 # ZAKLJUČEK
 Projekt je še kar uredu usepel vendar mi na žalost ni useplo narediti funkcije ki bi nam omgočala dodajanje več seznamov za ustna spraševanja. Zaradi tega je ta funckcija precej neuporabna. To je seveda zaradi mojih zelo omejenih izkušenj z podatkovnimi bazami in se mi je pojvaila težava ko sem dodal tretjo tabelo vanjo je začelo vse skupaj delati malo posvoje.  
-Prav tako dizajn ni ravno najlepši, ker čeprav css še kar uredu poznam ga nimam prav preveč rad in tudi naloga je o pythonu ne pa css in html za to sem več časa posvetil Pythonu.  
+Prav tako dizajn ni ravno najlepši, ker čeprav css še kar uredu poznam ga nimam prav preveč rad in tudi naloga je o pythonu ne pa css in html za to sem več časa posvetil Pythonu(stvari kot so naprimer ozadje ne delajo najbolje).  
 Nekaterih funkcij ki bi si jih želel mi tudi ni useplo vključiti ker bi za vse te stvari potreboval dejansko znati SQLite vnedar sem še kar zadovoljen kako mi je usepelo glede na to da ga prvič uporabljam.
 
 #### Erazem Perko 1.b GIMVIC 2024©
