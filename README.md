@@ -57,4 +57,6 @@ V mojem projektu dejanskih **_python listov_** nisem uporabil saj za to ni bilo 
 _return f"Test(subject='{self.subject}', date='{self.date}', details='{self.details}')"_ s pomočjo tega ukaza nato vse podatke spravimo v lepo obliko berljivo za program.  
 
 # ZAKLJUČEK
-Projekt je še kar uredu usepel vendar mi na žalost ni useplo narediti funkcije ki bi nam omgočala dodajanje več seznamov za ustna spraševanja. Zaradi tega je ta funckcija precej neuporabna. To je seveda zaradi mojih zelo omejenih izkušenj z podatkovnimi bazami in se mi je pojvaila težava ko sem dodal tretjo tabelo vanjo je začelo vse skupaj delati malo posvoje. Prav tako dizajn ni ravno najlepši, ker čeprav css še kar uredu poznam ga nimam prav preveč rad in tudi naloga je o pythonu ne pa css in html za to sem več časa posvetil pythonu.
+Projekt je še kar uredu usepel vendar mi na žalost ni useplo narediti funkcije ki bi nam omgočala dodajanje več seznamov za ustna spraševanja. Zaradi tega je ta funckcija precej neuporabna. To je seveda zaradi mojih zelo omejenih izkušenj z podatkovnimi bazami in se mi je pojvaila težava ko sem dodal tretjo tabelo vanjo je začelo vse skupaj delati malo posvoje.  
+Prav tako dizajn ni ravno najlepši, ker čeprav css še kar uredu poznam ga nimam prav preveč rad in tudi naloga je o pythonu ne pa css in html za to sem več časa posvetil Pythonu.  
+Nekaterih funkcij ki bi si jih želel mi tudi ni useplo vključiti ker bi za vse te stvari potreboval dejansko znati SQLite vnedar sem še kar zadovoljen kako mi je usepelo glede na to da ga prvič uporabljam.
